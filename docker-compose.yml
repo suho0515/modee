@@ -28,7 +28,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     command: >      
       bash -c "source /opt/ros/noetic/setup.bash &&
-      rosrun usb_cam usb_cam_node _pixel_format:="yuyv" _autofocus:=false _focus:=500 _framerate:=30 _sharpness:=255 _contrast:=32"
+      rosrun usb_cam usb_cam_node _pixel_format:="yuyv" _autofocus:=false _focus:=500 _framerate:=30 _sharpness:=0 _contrast:=32"
     privileged: true
     restart: always
 
