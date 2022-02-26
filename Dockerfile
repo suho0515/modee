@@ -17,4 +17,5 @@ RUN /bin/bash -c "source /opt/ros/noetic/setup.bash &&\
 # Install Python Package for ocr
 RUN /bin/bash -c "source /opt/ros/noetic/setup.bash &&\
     apt-get install -y tesseract-ocr tesseract-ocr-script-hang tesseract-ocr-script-hang-vert &&\
-    pip3 install pytesseract"
+    pip3 install pytesseract &&\
+    pip3 install imutils"
