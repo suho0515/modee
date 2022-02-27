@@ -32,18 +32,50 @@ services:
     privileged: true
     restart: always
 
-  dev-container:
+  modee-dev-container:
     image: modee:latest
-    container_name: dev-container
+    container_name: modee-dev-container
     networks:
       - ros
     environment:
       - "ROS_MASTER_URI=http://ros-master:11311"
-      - "ROS_HOSTNAME=dev-container"
+      - "ROS_HOSTNAME=modee-dev-container"
       - "DISPLAY=unix$DISPLAY" 
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw 
       - ~/github/modee:/root/catkin_ws/src/modee
+    command: tail -F anything
+    privileged: true
+    restart: always
+
+  ocr-dev-container:
+    image: ocr:latest
+    container_name: ocr-dev-container
+    networks:
+      - ros
+    environment:
+      - "ROS_MASTER_URI=http://ros-master:11311"
+      - "ROS_HOSTNAME=ocr-dev-container"
+      - "DISPLAY=unix$DISPLAY" 
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw 
+      - ~/github/ocr:/root/catkin_ws/src/ocr
+    command: tail -F anything
+    privileged: true
+    restart: always
+
+  inception-v3-dev-container:
+    image: inception-v3:latest
+    container_name: inception-v3-dev-container
+    networks:
+      - ros
+    environment:
+      - "ROS_MASTER_URI=http://ros-master:11311"
+      - "ROS_HOSTNAME=inception-v3-dev-container"
+      - "DISPLAY=unix$DISPLAY" 
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw 
+      - ~/github/inception_v3:/root/catkin_ws/src/inception_v3
     command: tail -F anything
     privileged: true
     restart: always
