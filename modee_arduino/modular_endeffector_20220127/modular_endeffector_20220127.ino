@@ -139,23 +139,15 @@ void loop() {
         DEBUG_SERIAL.println(dxl.getPresentPosition(DXL_ID_1)); DEBUG_SERIAL.println();
       }
     }
-    else if(operation == "release") {
-      Serial.println("release");
-      dxl.torqueOff(DXL_ID_1);
-      dxl.setOperatingMode(DXL_ID_1, OP_POSITION);
-      dxl.torqueOn(DXL_ID_1);
-      if(dxl.setGoalPosition(DXL_ID_1, 90.0, UNIT_DEGREE)){
-        delay(1000);
-        DEBUG_SERIAL.print("Present Position : ");
-        DEBUG_SERIAL.println(dxl.getPresentPosition(DXL_ID_1)); DEBUG_SERIAL.println();
-      }
-    }
     else if(operation == "4") {
       Serial.println("cw");
+      dxl.torqueOff(DXL_ID_1);
       dxl.torqueOff(DXL_ID_2);
+      dxl.setOperatingMode(DXL_ID_1, OP_VELOCITY);
       dxl.setOperatingMode(DXL_ID_2, OP_VELOCITY);
+      dxl.torqueOn(DXL_ID_1);
       dxl.torqueOn(DXL_ID_2);
-      if(dxl.setGoalVelocity(DXL_ID_2, 300)){
+      if(dxl.setGoalVelocity(DXL_ID_1, 2) and dxl.setGoalVelocity(DXL_ID_2, 20)){
         delay(1000);
         DEBUG_SERIAL.print("Present Velocity : ");
         DEBUG_SERIAL.println(dxl.getPresentVelocity(DXL_ID_2)); DEBUG_SERIAL.println();
@@ -163,10 +155,24 @@ void loop() {
     }
     else if(operation == "5") {
       Serial.println("ccw");
+      dxl.torqueOff(DXL_ID_1);
+      dxl.torqueOff(DXL_ID_2);
+      dxl.setOperatingMode(DXL_ID_1, OP_VELOCITY);
+      dxl.setOperatingMode(DXL_ID_2, OP_VELOCITY);
+      dxl.torqueOn(DXL_ID_1);
+      dxl.torqueOn(DXL_ID_2);
+      if(dxl.setGoalVelocity(DXL_ID_1, -2) and dxl.setGoalVelocity(DXL_ID_2, -20)){
+        delay(1000);
+        DEBUG_SERIAL.print("Present Velocity : ");
+        DEBUG_SERIAL.println(dxl.getPresentVelocity(DXL_ID_2)); DEBUG_SERIAL.println();
+      }
+    }
+    else if(operation == "6") {
+      Serial.println("stop_rotary");
       dxl.torqueOff(DXL_ID_2);
       dxl.setOperatingMode(DXL_ID_2, OP_VELOCITY);
       dxl.torqueOn(DXL_ID_2);
-      if(dxl.setGoalVelocity(DXL_ID_2, -300)){
+      if(dxl.setGoalVelocity(DXL_ID_2, 0)){
         delay(1000);
         DEBUG_SERIAL.print("Present Velocity : ");
         DEBUG_SERIAL.println(dxl.getPresentVelocity(DXL_ID_2)); DEBUG_SERIAL.println();
@@ -183,17 +189,7 @@ void loop() {
         DEBUG_SERIAL.println(dxl.getPresentVelocity(DXL_ID_1)); DEBUG_SERIAL.println();
       }
     }
-    else if(operation == "6/") {
-      Serial.println("stop_rotary");
-      dxl.torqueOff(DXL_ID_2);
-      dxl.setOperatingMode(DXL_ID_2, OP_VELOCITY);
-      dxl.torqueOn(DXL_ID_2);
-      if(dxl.setGoalVelocity(DXL_ID_2, 0)){
-        delay(1000);
-        DEBUG_SERIAL.print("Present Velocity : ");
-        DEBUG_SERIAL.println(dxl.getPresentVelocity(DXL_ID_2)); DEBUG_SERIAL.println();
-      }
-    }
+
     else if(operation == "current") {
       Serial.println("current");
       dxl.torqueOff(DXL_ID_2);
@@ -207,7 +203,7 @@ void loop() {
   }
   dxl.setGoalCurrent(DXL_ID_2, 25.8, UNIT_MILLI_AMPERE);
   delay(1000);
-  Serial.println(dxl.getPresentCurrent(DXL_ID_2, UNIT_MILLI_AMPERE));
+  //Serial.println(dxl.getPresentCurrent(DXL_ID_2, UNIT_MILLI_AMPERE));
 
 
 

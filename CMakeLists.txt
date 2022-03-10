@@ -12,5 +12,5 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-catkin_install_python(PROGRAMS src/ocr_test.py src/ocr_training.py
+catkin_install_python(PROGRAMS src/modee_node.py
                       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
