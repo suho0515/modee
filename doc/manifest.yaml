@@ -1,0 +1,16 @@
+actions: []
+authors: ''
+brief: ''
+bugtracker: ''
+depends:
+- dynamixel_workbench_msgs
+- rospy
+- catkin
+description: The modee package
+license: TODO
+maintainers: root <root@todo.todo>
+msgs: []
+package_type: package
+repo_url: ''
+srvs: []
+url: ''

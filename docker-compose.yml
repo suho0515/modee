@@ -58,6 +58,69 @@ services:
     privileged: true
     restart: always
 
+  ocr-doc-container:
+    image: ocr:latest
+    container_name: ocr-doc-container
+    # networks:
+    #   - ros
+    environment:
+      # - "ROS_MASTER_URI=http://ros-master:11311"
+      # - "ROS_HOSTNAME=ocr-dev-container"
+      - "DISPLAY=unix$DISPLAY" 
+    network_mode: "host"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw 
+      - ~/github/ocr:/root/catkin_ws/src/ocr
+    command: >      
+      bash -c "source ~/catkin_ws/devel/setup.bash
+      && cd ~/catkin_ws/src/ocr
+      && rosdoc_lite .
+      && python3 -m http.server --directory doc/html 9999"
+    privileged: true
+    restart: always
+
+  modee-doc-container:
+    image: modee:latest
+    container_name: modee-doc-container
+    # networks:
+    #   - ros
+    environment:
+      # - "ROS_MASTER_URI=http://ros-master:11311"
+      # - "ROS_HOSTNAME=ocr-dev-container"
+      - "DISPLAY=unix$DISPLAY" 
+    network_mode: "host"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw 
+      - ~/github/modee:/root/catkin_ws/src/modee
+    command: >      
+      bash -c "source ~/catkin_ws/devel/setup.bash
+      && cd ~/catkin_ws/src/modee
+      && rosdoc_lite .
+      && python3 -m http.server --directory doc/html 9998"
+    privileged: true
+    restart: always
+
+  dynamixel-ros-driver:
+    image: dynamixel:latest
+    container_name: dynamixel-ros-driver
+    depends_on:
+      - ros-master
+    # networks:
+    #   - ros
+    environment:
+    #   - "ROS_MASTER_URI=http://ros-master:11311"
+    #   - "ROS_HOSTNAME=ocr-node"
+      - "DISPLAY=unix$DISPLAY" 
+    network_mode: "host"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw 
+      - ~/github/dynamixel:/root/catkin_ws/src/dynamixel
+    command: >      
+      bash -c "source ~/catkin_ws/devel/setup.bash &&
+      roslaunch dynamixel_workbench_controllers dynamixel_controllers_for_modee.launch"
+    privileged: true
+    restart: always
+
   modee-dev-container:
     image: modee:latest
     container_name: modee-dev-container
@@ -88,6 +151,23 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw 
       - ~/github/ocr:/root/catkin_ws/src/ocr
+    command: tail -F anything
+    privileged: true
+    restart: always
+
+  dynamixel-dev-container:
+    image: dynamixel:latest
+    container_name: dynamixel-dev-container
+    # networks:
+    #   - ros
+    environment:
+      # - "ROS_MASTER_URI=http://ros-master:11311"
+      # - "ROS_HOSTNAME=ocr-dev-container"
+      - "DISPLAY=unix$DISPLAY" 
+    network_mode: "host"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw 
+      - ~/github/dynamixel:/root/catkin_ws/src/dynamixel
     command: tail -F anything
     privileged: true
     restart: always

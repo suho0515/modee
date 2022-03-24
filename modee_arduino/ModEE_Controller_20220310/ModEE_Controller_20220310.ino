@@ -63,6 +63,12 @@ Dynamixel2Arduino dxl(DXL_SERIAL, DXL_DIR_PIN);
 //This namespace is required to use Control table item names
 using namespace ControlTableItem;
 
+#define BDPIN_DIP_SW_1          26
+#define BDPIN_DIP_SW_2          27
+#define BDPIN_PUSH_SW_1         34
+#define BDPIN_PUSH_SW_2         35
+
+
 
 
 // Test Data for height control
@@ -78,8 +84,8 @@ int command;
 
 void commandMsgCb( const std_msgs::Int16MultiArray& msg){
   char buf[10];
-  //itoa(msg.data, buf, 10);
-  //nh.loginfo(msg.data);
+  itoa(msg.data[0], buf, 10);
+  nh.loginfo(buf);
 
   command = msg.data[0];
   vol = msg.data[1];
@@ -87,6 +93,8 @@ void commandMsgCb( const std_msgs::Int16MultiArray& msg){
 
 ros::Subscriber<std_msgs::Int16MultiArray> cmd_sub("controller_command", commandMsgCb );
 
+const int buttonPin = 2;     // the number of the pushbutton pin
+int buttonState = 0;   
 void setup() {
   // put your setup code here, to run once:
 
@@ -168,6 +176,12 @@ void setup() {
     height_control(1, 30, 30, i);
   }
   */
+  //height_control(1, 30, 30, 0);
+  //delay(1000);
+  //height_control(1, 30, 30, -25);
+  //delay(5000);
+  //height_control(1, 30, 30, 0);
+  //delay(1000);
 
   // value_control test
   /*
@@ -184,12 +198,29 @@ void setup() {
   move(value_before, value_after);
   */
   
-  
-
+  // initialize the pushbutton pin as an input:
+  //pinMode(buttonPin, INPUT);
+  pinMode(BDPIN_DIP_SW_1, INPUT);
+  pinMode(BDPIN_DIP_SW_2, INPUT);
+  pinMode(BDPIN_PUSH_SW_1, INPUT);
+  pinMode(BDPIN_PUSH_SW_2, INPUT);
 }
+
+
 
 void loop() {  
   nh.spinOnce();
+
+  int dip_state;
+  int push_state;
+
+  dip_state  = digitalRead(BDPIN_DIP_SW_1)<<0;
+  dip_state |= digitalRead(BDPIN_DIP_SW_2)<<1;
+
+  push_state  = digitalRead(BDPIN_PUSH_SW_1)<<0;
+  push_state |= digitalRead(BDPIN_PUSH_SW_2)<<1;
+
+
 
   if(command == 0) {
   }
@@ -202,6 +233,36 @@ void loop() {
   else if(command == 3) {
     stop_actuators();
   }
+  
+  
+  if(push_state==1) {
+    //height_control(1, 30, 30, 0);
+    //delay(1000);
+    height_control(1, 30, 30, -20);
+    delay(3000);
+    height_control(1, 30, 30, 0);
+    delay(1000);
+  }
+  if(push_state==2) {
+    //height_control(1, 30, 30, 0);
+    //delay(1000);
+
+    /*
+    int j = 0;
+    for(j = 0; j < 5; j++) {
+      height_control(1, 300, 150, -25);
+      delay(200);
+      height_control(1, 300, 150, -10);
+      delay(200);
+    }
+    */
+    
+    height_control(1, 30, 30, -25);
+    delay(3000);
+    height_control(1, 30, 30, 0);
+    delay(1000);    
+  }
+
 
   // for ros communication
   // https://answers.ros.org/question/214256/fake-laserscan-on-arduino-2560-the-laserscan-data-seems-to-transfer-correctly-except-the-program-hangs-up-after-11-18-successful-data-transfers/

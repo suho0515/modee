@@ -3,6 +3,7 @@ project(modee)
 
 find_package(catkin REQUIRED COMPONENTS
   rospy
+  dynamixel_workbench_msgs
 )
 
 catkin_package(
