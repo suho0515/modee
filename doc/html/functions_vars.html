@@ -20,12 +20,6 @@ $(function() {
 &#160;
 
 <h3><a id="index_a"></a>- a -</h3><ul>
-<li>acc_1
-: <a class="el" href="classmodee__node_1_1ModEE.html#ac5ccbbf7d34acdc4b1e8d6b61124e747">modee_node.ModEE</a>
-</li>
-<li>acc_2
-: <a class="el" href="classmodee__node_1_1ModEE.html#ac1cee4000ba5ef0496f14eaad587a56a">modee_node.ModEE</a>
-</li>
 <li>addr
 : <a class="el" href="structDYNAMIXEL_1_1ControlTableItemInfo.html#ac338a97b6a1b257b09a6f27ffcd0946f">DYNAMIXEL::ControlTableItemInfo</a>
 , <a class="el" href="structDYNAMIXEL_1_1InfoSyncReadInst.html#abaffb85deb2429330f0cca00811b7f02">DYNAMIXEL::InfoSyncReadInst</a>
@@ -45,6 +39,15 @@ $(function() {
 , <a class="el" href="structDYNAMIXEL_1_1XELInfoBulkRead.html#a516971ae8cce338379d8cf88ecf8a47f">DYNAMIXEL::XELInfoBulkRead</a>
 , <a class="el" href="structDYNAMIXEL_1_1XELInfoBulkWrite.html#adaf8f4f00fd7b25828cd43119f3e288c">DYNAMIXEL::XELInfoBulkWrite</a>
 , <a class="el" href="structModelControlTableInfo.html#a3b265a0ecde3e1865ec66ddf4e7e90ed">ModelControlTableInfo</a>
+</li>
+<li>aspirating_cnt
+: <a class="el" href="classmodee__node_1_1ModEE.html#a22d7e37b4d673fcf6ee34ac136102651">modee_node.ModEE</a>
+</li>
+<li>aspirating_flag
+: <a class="el" href="classmodee__node_1_1ModEE.html#af4abe7abfb940b1e36cc7fb7d36d0ac9">modee_node.ModEE</a>
+</li>
+<li>aspirating_state
+: <a class="el" href="classmodee__node_1_1ModEE.html#a30e344566b45541afc05d6e134dc19fc">modee_node.ModEE</a>
 </li>
 </ul>
 
@@ -66,8 +69,20 @@ $(function() {
 <li>calculated_crc
 : <a class="el" href="structInfoToParseDXLPacket.html#a0847f09ad19b2077ee1d44e78a8d2387">InfoToParseDXLPacket</a>
 </li>
+<li>center_diff_percentage
+: <a class="el" href="classmodee__node_1_1ModEE.html#a86e98d1950966cf3cf2746c16bcdbbd6">modee_node.ModEE</a>
+</li>
+<li>center_diff_percentage_sub
+: <a class="el" href="classmodee__node_1_1ModEE.html#aed24293d0cadd22e5e5400ad21833c62">modee_node.ModEE</a>
+</li>
+<li>cmd
+: <a class="el" href="classmodee__node_1_1ModEE.html#a0f39bb51b7c445d28f111f820fa20f95">modee_node.ModEE</a>
+</li>
 <li>cmd_sub
 : <a class="el" href="classmodee__node_1_1ModEE.html#a78637b79c95cafc1a35cdb4ef7caa3cc">modee_node.ModEE</a>
+</li>
+<li>cnt
+: <a class="el" href="classmodee__node_1_1ModEE.html#ab8e4beaac59d913a0ff44fb0f648f9cf">modee_node.ModEE</a>
 </li>
 <li>control_table_
 : <a class="el" href="classDYNAMIXEL_1_1Slave.html#afa83a59a657fb1b948fe8f5d39f91d00">DYNAMIXEL::Slave</a>
@@ -75,8 +90,8 @@ $(function() {
 <li>ctr_cmd_pub
 : <a class="el" href="classmodee__node_1_1ModEE.html#aa55736a6ef59f2c099735631897db727">modee_node.ModEE</a>
 </li>
-<li>cur_vol
-: <a class="el" href="classmodee__node_1_1ModEE.html#a31dc38114f8fbccb82a4be61d213c8ad">modee_node.ModEE</a>
+<li>ctr_cnt
+: <a class="el" href="classmodee__node_1_1ModEE.html#a02b7c4f81549a7d9a7763ba16cf962ca">modee_node.ModEE</a>
 </li>
 </ul>
 
@@ -249,9 +264,6 @@ $(function() {
 : <a class="el" href="structItemAndRangeInfo.html#a7a26be6cfad04a97b1977499dcaf1a6d">ItemAndRangeInfo</a>
 , <a class="el" href="structModelDependencyFuncItemAndRangeInfo.html#aa3d950525ae32a3c851c554f723732ca">ModelDependencyFuncItemAndRangeInfo</a>
 </li>
-<li>mode
-: <a class="el" href="classmodee__node_1_1ModEE.html#a8580419b2fec2307f2ea0d2b6eda8d81">modee_node.ModEE</a>
-</li>
 <li>model_num_
 : <a class="el" href="classDYNAMIXEL_1_1Slave.html#afc1018930a2c3f5ff623ec63bfcd1cc4">DYNAMIXEL::Slave</a>
 </li>
@@ -263,6 +275,11 @@ $(function() {
 </li>
 <li>model_number_idx_last_index_
 : <a class="el" href="classDynamixel2Arduino.html#a353de07733fc2afdae6abb7f06fc6428">Dynamixel2Arduino</a>
+</li>
+<li>msg
+: <a class="el" href="classmodee__node_1_1CenterDiffPercentageError.html#a7e07036d73e76ae99bcc591f8ad8ce92">modee_node.CenterDiffPercentageError</a>
+, <a class="el" href="classmodee__node_1_1CommandError.html#af20130de5e8fb68de04da64ea13e6dd3">modee_node.CommandError</a>
+, <a class="el" href="classmodee__node_1_1VolumeError.html#add398fac26d0d95f8d3e53a034905110">modee_node.VolumeError</a>
 </li>
 </ul>
 
@@ -342,6 +359,9 @@ $(function() {
 <li>pre_sign
 : <a class="el" href="classmodee__node_1_1ModEE.html#a3410d192e224a79061181b6d36c7dd30">modee_node.ModEE</a>
 </li>
+<li>present_current
+: <a class="el" href="classmodee__node_1_1ModEE.html#a3bae2f3057884fd72eba9cc142c582bf">modee_node.ModEE</a>
+</li>
 <li>present_position
 : <a class="el" href="classmodee__node_1_1ModEE.html#a4d8424bb18e0592226003f1decde0348">modee_node.ModEE</a>
 </li>
@@ -352,6 +372,12 @@ $(function() {
 <li>protocol_ver_idx_
 : <a class="el" href="classDYNAMIXEL_1_1Master.html#a2e1662ed1f551f19662cd3d973b56f70">DYNAMIXEL::Master</a>
 , <a class="el" href="classDYNAMIXEL_1_1Slave.html#a50ee33ccca7e0db396daf318fdb3ccd3">DYNAMIXEL::Slave</a>
+</li>
+<li>pumping_cnt
+: <a class="el" href="classmodee__node_1_1ModEE.html#a1b53093e125db15d1cec50f85fdda5a1">modee_node.ModEE</a>
+</li>
+<li>pumping_flag
+: <a class="el" href="classmodee__node_1_1ModEE.html#a8523aa96a344feae858ece622566d89b">modee_node.ModEE</a>
 </li>
 </ul>
 
@@ -420,14 +446,11 @@ $(function() {
 
 
 <h3><a id="index_v"></a>- v -</h3><ul>
+<li>valid_position
+: <a class="el" href="classmodee__node_1_1ModEE.html#ad5cf4e56b30f263d7ccedbe5f4ff6773">modee_node.ModEE</a>
+</li>
 <li>valid_vol
 : <a class="el" href="classmodee__node_1_1ModEE.html#a1e02cd8bff363c74aa20df632aaddf03">modee_node.ModEE</a>
-</li>
-<li>vel_1
-: <a class="el" href="classmodee__node_1_1ModEE.html#a353a6e8ff7fb6371df4c8c6078b12d48">modee_node.ModEE</a>
-</li>
-<li>vel_2
-: <a class="el" href="classmodee__node_1_1ModEE.html#aa51a0628dc0f02f03d8e16a6978bc2c3">modee_node.ModEE</a>
 </li>
 <li>vol_sub
 : <a class="el" href="classmodee__node_1_1ModEE.html#a75859de73bcf7eeb7fd1f706e47a9c95">modee_node.ModEE</a>
@@ -456,7 +479,7 @@ $(function() {
 <hr size="1"><div style="align: right;">
 <a href="http://wiki.ros.org/modee">modee</a><br />
 Author(s): </br />
-<small>autogenerated on Thu Mar 24 2022 09:52:41</small>
+<small>autogenerated on Mon Mar 28 2022 06:00:17</small>
 </div>
 </body>
 </html>

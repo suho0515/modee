@@ -3,9 +3,9 @@ authors: ''
 brief: ''
 bugtracker: ''
 depends:
-- dynamixel_workbench_msgs
-- rospy
 - catkin
+- rospy
+- dynamixel_workbench_msgs
 description: The modee package
 license: TODO
 maintainers: root <root@todo.todo>
